@@ -1,0 +1,52 @@
+<p-dialog [(visible)]="countryDialog1" [style]="{width: '450px'}" header="Covid Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content" [formGroup]="covidDetailsFormGroup">
+    <div class="p-field">
+      <label for="state">State</label>
+      <input type="text" pInputText id="state" formControlName="state" />
+    </div>
+    <div class="p-field">
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <p-calendar formControlName="lastUpdated" dateFormat="yy.mm.dd"  [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="confirmedCases">Confirmed Cases</label>
+        <p-inputNumber formControlName="confirmedCases" id="confirmedCases"></p-inputNumber>
+      </div>
+      <div class="p-field p-col">
+        <label for="fatalCases">Fatal Cases</label>
+        <p-inputNumber formControlName="fatalCases" id="fatalCases"></p-inputNumber>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" [disabled]="!covidDetailsFormGroup.valid"  icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+  </ng-template>
+</p-dialog>
+<p-dialog [(visible)]="countryDialog2" [style]="{width: '450px'}" header="Covid Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content" [formGroup]="covidDetailsOnCountryFormGroup">
+    <div class="p-field">
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <p-calendar formControlName="date" dateFormat="yy.mm.dd" [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="cases">Fatal Cases</label>
+        <p-inputNumber formControlName="cases" id="cases"></p-inputNumber>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" [disabled]="!(this.covidDetailsFormGroup.valid || this.covidDetailsOnCountryFormGroup.valid)"  icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,10 @@
+<div class="card">
+  <p-tabView>
+    <p-tabPanel header="Table Country Data">
+      <app-table-by-state [apiDataByState]="tableDataByDate$ | async"></app-table-by-state>
+    </p-tabPanel>
+    <p-tabPanel header="Table data on days">
+      <app-table-by-historical [apiDataByDate]="tableDataByCountry$ | async "></app-table-by-historical>
+    </p-tabPanel>
+  </p-tabView>
+</div>

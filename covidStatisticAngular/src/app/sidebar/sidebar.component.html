@@ -1,0 +1,14 @@
+<div class="sideBar" style="background: aqua">
+  <p-sidebar [(visible)]="visibleSidebar" [fullScreen]="true" [baseZIndex]="1000000">
+    <h1 style="font-weight:normal">Country data</h1>
+    <app-pie [chartData]="chartData"></app-pie>
+    <p-button type="button" (click)="visibleSidebar = !visibleSidebar" label="Cancel" styleClass="p-button-secondary"></p-button>
+  </p-sidebar>
+</div>
+<div class="sideBar" style="background: aqua">
+  <p-sidebar [(visible)]="visibleSidebarData" [fullScreen]="true" [baseZIndex]="1000000">
+    <h1 style="font-weight:normal">Data by Country</h1>
+    <app-line [chartData]="chartData"></app-line>
+    <p-button type="button" (click)="visibleSidebarData = !visibleSidebarData" label="Cancel" styleClass="p-button-secondary"></p-button>
+  </p-sidebar>
+</div>

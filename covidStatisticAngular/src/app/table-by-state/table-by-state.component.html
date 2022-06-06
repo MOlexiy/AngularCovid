@@ -1,0 +1,37 @@
+<div *ngIf="tableDataByDate" class="card">
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success" (click)="openNew()"></button>
+      <app-dialog #dialogWindow></app-dialog>
+    </ng-template>
+  </p-toolbar>
+  <h5>Country table for Yesterday and Tommorow</h5>
+  <p-table [value]="tableDataByDate"  #table [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="state">state
+          <p-sortIcon field="state"></p-sortIcon>
+        </th>
+        <th pSortableColumn=lastUpdated>date
+          <p-sortIcon field="lastUpdated"></p-sortIcon>
+        </th>
+        <th pSortableColumn="confirmedCases">confirmed Cases
+          <p-sortIcon field="confirmedCases"></p-sortIcon>
+        </th>
+        <th pSortableColumn="fatalCases">fatal Cases
+          <p-sortIcon field="fatalCases"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-country>
+      <tr>
+        <td>{{country.state}}</td>
+        <td>{{country.lastUpdated | date : 'fullDate'}}</td>
+        <td (click)="BarCLick(true)">{{country.confirmedCases}}</td>
+        <td (click)="BarCLick(false)">{{country.fatalCases}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<app-sidebar [dataForSideBar]="openSideBar"></app-sidebar>

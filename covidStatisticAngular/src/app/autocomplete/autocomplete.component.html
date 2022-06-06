@@ -1,0 +1,9 @@
+<div class="countryAutoComplete">
+    <h1>Write a country</h1>
+    <div>
+      <p-autoComplete [(ngModel)]="selectedCountry" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name" [minLength]="1"></p-autoComplete>
+      <p-toast></p-toast>
+      <p-confirmPopup></p-confirmPopup>
+      <p-button (click)="selectCountry($event)">Selected Country</p-button>
+    </div>
+</div>
